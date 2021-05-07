@@ -20,8 +20,13 @@ public class Studentservice {
     }
 
 
-    public List<Student> getStudent(String name){
-        return studentRepo.findStudentByName(name);
+    public ResponseEntity<Student> getStudent(String name){
+        Student student= studentRepo.findStudentByName(name).orElse(null);
+        if(student !=null){
+            return ResponseEntity.ok(student);
+        }else{
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
     }
 
 //    public Student getStudentById(String id){
