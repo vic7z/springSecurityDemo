@@ -21,8 +21,9 @@ public class adminControllere {
         return this.adminService.deleteStudent(id);
     }
     @DeleteMapping(path = "/name/{name}")
-    public ResponseEntity<Void> deleteStudentsByName(@PathVariable String id){
-        return this.adminService.deleteStudentByName(id);
+    public ResponseEntity<Void> deleteStudentsByName(@PathVariable String name){
+        System.out.println("delete");
+        return this.adminService.deleteStudentByName(name);
     }
     @PostMapping("/add")
     public ResponseEntity<Void> add(@RequestBody Student student){
