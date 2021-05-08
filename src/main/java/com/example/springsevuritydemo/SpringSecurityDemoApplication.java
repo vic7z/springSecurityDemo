@@ -26,13 +26,13 @@ public class SpringSecurityDemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        studentRepo.deleteAll();
-        studentRepo.save(new Student("vic"));
-        studentRepo.saveAll(Arrays.asList(
-                new Student("pooja"),
-                new Student("anu"),
-                new Student("asvin")
-        ));
+//        studentRepo.deleteAll();
+//        studentRepo.save(new Student("vic"));
+//        studentRepo.saveAll(Arrays.asList(
+//                new Student("pooja"),
+//                new Student("anu"),
+//                new Student("asvin")
+//        ));
 
      marksRepo.deleteAll();
     }

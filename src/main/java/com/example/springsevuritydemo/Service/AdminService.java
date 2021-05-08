@@ -31,7 +31,7 @@ public class AdminService {
 
     public ResponseEntity<Void> deleteStudentByName(String name){
         Student student=studentRepo.findStudentByName(name).orElse(null);
-
+        //System.out.println(student.toString());
         if (student!=null){
             studentRepo.delete(student);
             return ResponseEntity.ok().build();
