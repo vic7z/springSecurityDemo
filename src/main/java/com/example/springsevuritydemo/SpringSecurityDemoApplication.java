@@ -1,24 +1,21 @@
 package com.example.springsevuritydemo;
 
-import com.example.springsevuritydemo.Dao.Marks;
-import com.example.springsevuritydemo.Dao.Student;
 import com.example.springsevuritydemo.Repository.MarksRepo;
 import com.example.springsevuritydemo.Repository.StudentRepo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Arrays;
-import java.util.UUID;
-
 @SpringBootApplication
 public class SpringSecurityDemoApplication implements CommandLineRunner {
-    @Autowired
-    public StudentRepo studentRepo;
+    public final StudentRepo studentRepo;
     @Autowired
     public MarksRepo marksRepo;
+
+    public SpringSecurityDemoApplication(StudentRepo studentRepo) {
+        this.studentRepo = studentRepo;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(SpringSecurityDemoApplication.class, args);

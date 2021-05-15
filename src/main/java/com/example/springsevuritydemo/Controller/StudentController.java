@@ -34,7 +34,7 @@ public class StudentController {
         return studentservice.getstudentById(id);
     }
     @GetMapping(path = "/name/{name}")
-    public ResponseEntity<Student> getstudent(@PathVariable String name){
+    public ResponseEntity<Student> getStudent(@PathVariable String name){
         return this.studentservice.getStudent(name);
     }
 
