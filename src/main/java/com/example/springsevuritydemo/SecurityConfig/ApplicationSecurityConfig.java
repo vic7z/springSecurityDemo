@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -19,7 +20,9 @@ import static com.example.springsevuritydemo.SecurityConfig.UserPermission.COURS
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
+
 
     private final PasswordEncoder passwordEncoder;
 
@@ -36,10 +39,10 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                // .antMatchers("/api/admin/**").hasRole(ADMIN.name())
                 .antMatchers("/api/students").hasRole(STUDENT.name())
-                .antMatchers(HttpMethod.DELETE, "/api/admin/**").hasAuthority(COURSE_WRITE.getPermission())
-                .antMatchers(HttpMethod.POST, "/api/admin/**").hasAuthority(COURSE_WRITE.getPermission())
-                .antMatchers(HttpMethod.PUT, "/api/admin/**").hasAuthority(COURSE_WRITE.getPermission())
-                .antMatchers("/api/admin/**").hasRole(ADMIN.name())
+//                .antMatchers(HttpMethod.DELETE, "/api/admin/**").hasAuthority(COURSE_WRITE.getPermission())
+//                .antMatchers(HttpMethod.POST, "/api/admin/**").hasAuthority(COURSE_WRITE.getPermission())
+//                .antMatchers(HttpMethod.PUT, "/api/admin/**").hasAuthority(COURSE_WRITE.getPermission())
+//                .antMatchers("/api/admin/**").hasRole(ADMIN.name())
                 .anyRequest()
                 .authenticated()
                 .and()

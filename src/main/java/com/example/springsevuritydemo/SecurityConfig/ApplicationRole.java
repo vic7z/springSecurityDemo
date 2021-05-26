@@ -23,7 +23,7 @@ public enum ApplicationRole {
     }
 
     public Set<SimpleGrantedAuthority> getAuthority(){
-        Set<SimpleGrantedAuthority> authorities = getPermissions().stream()
+        Set<SimpleGrantedAuthority> authorities = this.getPermissions().stream()
                 .map(permissions -> new SimpleGrantedAuthority(permissions.getPermission()))
                 .collect(Collectors.toSet());
         authorities.add(new SimpleGrantedAuthority("ROLE_"+this.name()));
