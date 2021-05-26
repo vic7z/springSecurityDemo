@@ -4,6 +4,7 @@ import com.example.springsevuritydemo.Dao.Student;
 import com.example.springsevuritydemo.Service.Studentservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,11 +26,13 @@ public class StudentController {
 //        return studentservice.getAllStudent();
 //    }
     @GetMapping()
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<List<Student>> getAllStudent(){
         return studentservice.getAllStudents();
     }
 
     @GetMapping(path = "/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_STUDENT','ROLE_ADMIN')")
     public ResponseEntity<Student> getStudentById(@PathVariable String id){
         return studentservice.getstudentById(id);
     }
