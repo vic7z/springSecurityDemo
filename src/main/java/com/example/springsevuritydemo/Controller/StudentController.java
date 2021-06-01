@@ -37,6 +37,7 @@ public class StudentController {
         return studentservice.getstudentById(id);
     }
     @GetMapping(path = "/name/{name}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Student> getStudent(@PathVariable String name){
         return this.studentservice.getStudent(name);
     }
